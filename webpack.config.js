@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
@@ -26,6 +27,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public", "index.html"),
     }),
+    new MiniCssExtractPlugin({
+      filename: isDevelopment ? "[name].css" : "[name].[hash].css",
+      chunkFilename: isDevelopment ? "[id].css" : "[id].[hash].css",
+    }),
   ],
   // define how to handle the files
   module: {
@@ -35,6 +40,22 @@ module.exports = {
         exclude: /nodule_modules/,
         // integration between babel~webpack
         use: "babel-loader",
+      },
+      {
+        test: /\.(scss|sass|css)$/,
+        exclude: /nodule_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              modules: { localIdentName: "[local]___[hash:base64:5]" },
+              sourceMap: true,
+              importLoaders: 1,
+            },
+          },
+          "sass-loader",
+        ],
       },
     ],
   },

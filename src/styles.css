@@ -1,0 +1,7 @@
+.container{
+    background: black;
+
+    .title{
+        color: red;
+    }
+}
