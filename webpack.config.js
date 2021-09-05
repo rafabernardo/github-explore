@@ -27,6 +27,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public", "index.html"),
     }),
+     // extra css in separate files and define name file to different envs
     new MiniCssExtractPlugin({
       filename: isDevelopment ? "[name].css" : "[name].[hash].css",
       chunkFilename: isDevelopment ? "[id].css" : "[id].[hash].css",
@@ -44,6 +45,7 @@ module.exports = {
       {
         test: /\.(scss|sass|css)$/,
         exclude: /nodule_modules/,
+        // add support to css.modules and sass
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -55,6 +57,19 @@ module.exports = {
             },
           },
           "sass-loader",
+        ],
+      },
+      {
+        test: /\.css$/,
+        include: /node_modules/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: false,
+            },
+          },
         ],
       },
     ],
