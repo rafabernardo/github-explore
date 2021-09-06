@@ -47,7 +47,7 @@ module.exports = {
         exclude: /nodule_modules/,
         // add support to css.modules and sass
         use: [
-          MiniCssExtractPlugin.loader,
+          'style-loader',
           {
             loader: "css-loader",
             options: {
@@ -56,7 +56,7 @@ module.exports = {
               importLoaders: 1,
             },
           },
-          "sass-loader",
+          "postcss-loader",
         ],
       },
       {
