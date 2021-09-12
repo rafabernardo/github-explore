@@ -1,46 +1,46 @@
 module.exports = {
-  parser: "babel-eslint",
+  parser: 'babel-eslint',
   env: {
     browser: true,
     es2021: true,
   },
   extends: [
-    "plugin:react/recommended",
-    "airbnb",
-    "plugin:prettier/recommended",
+    'plugin:react/recommended',
+    'airbnb',
+    'plugin:prettier/recommended',
   ],
-  plugins: ["react", "prettier", "react-hooks"],
+  plugins: ['react', 'prettier', 'react-hooks'],
   rules: {
-    "no-console": [
-      "error",
+    'no-console': [
+      'error',
       {
-        allow: ["warn", "info", "error"],
+        allow: ['warn', 'info', 'error'],
       },
     ],
-    "import/order": [
-      "error",
+    'import/order': [
+      'error',
       {
         groups: [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
         ],
-        "newlines-between": "always",
+        'newlines-between': 'always',
       },
     ],
-    "prettier/prettier": [
-      "error",
+    'prettier/prettier': [
+      'error',
       {
         printWidth: 80,
-        trailingComma: "es5",
+        trailingComma: 'es5',
         semi: false,
         jsxSingleQuote: true,
         singleQuote: true,
-        useTabs: true,
+        endOfLine: 'auto',
       },
     ],
   },
-};
+}

@@ -45,7 +45,7 @@ module.exports = {
       {
         test: /\.(scss|sass|css)$/,
         exclude: /nodule_modules/,
-        // add support to css.modules and sass
+        // add support to css.modules and postCss
         use: [
           'style-loader',
           {
