@@ -26,6 +26,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public', 'index.html'),
+      favicon: path.resolve(__dirname, 'public', 'favicon.png'),
     }),
     // extra css in separate files and define name file to different envs
     new MiniCssExtractPlugin({
@@ -58,6 +59,14 @@ module.exports = {
           },
           'postcss-loader',
         ],
+      },
+      {
+        test: /\.(png|jpe?g)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+          outputPath: 'images',
+        },
       },
       {
         test: /\.css$/,
