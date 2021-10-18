@@ -1,10 +1,14 @@
-import React from "react";
-import styles from "./styles.css";
+import React from 'react'
+
+import { QueryClient, QueryClientProvider } from 'react-query'
+import Main from './view/main'
 
 export function App() {
+  const queryClient = new QueryClient()
+
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>oisahjias</h1>
-    </div>
-  );
+    <QueryClientProvider client={queryClient}>
+      <Main />
+    </QueryClientProvider>
+  )
 }
