@@ -1,14 +1,16 @@
 import { useQuery } from 'react-query'
 import { request } from '../service/request'
 
-const fetchRepositories = async () => {
-  const res = await request.get('orgs/rocketseat/repos')
+const fetchRepositories = async (params) => {
+  const res = await request.get('search/repositories', { params: { q: params } })
   return res.data
 }
 
-export const useGetRepositories = () =>
-  useQuery('repositories', fetchRepositories, {
+export const useGetRepositories = (param) => {
+  return useQuery(['repositories', param], () => fetchRepositories(param), {
     onError: () => {
       console.log('Could not retrieve feedbacks')
     },
+    enabled: !!param,
   })
+}
