@@ -2,9 +2,18 @@ module.exports = {
   parser: 'babel-eslint',
   env: {
     browser: true,
-    es2021: true,
+    commonjs: true,
+    es6: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'plugin:prettier/recommended'],
+  parserOptions: {
+    ecmaVersion: 12,
+    sourceType: 'module',
+  },
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+    'plugin:prettier/recommended',
+  ],
   plugins: ['react', 'prettier', 'react-hooks'],
   rules: {
     'no-console': [
@@ -16,7 +25,14 @@ module.exports = {
     'import/order': [
       'error',
       {
-        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+        ],
         'newlines-between': 'always',
       },
     ],
@@ -24,7 +40,7 @@ module.exports = {
       'error',
       {
         printWidth: 80,
-        trailingComma: 'es6',
+        trailingComma: 'es5',
         semi: false,
         jsxSingleQuote: true,
         singleQuote: true,
@@ -33,5 +49,12 @@ module.exports = {
     ],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    'react/react-in-jsx-scope': 'off',
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: true,
+      },
+    ],
   },
 }

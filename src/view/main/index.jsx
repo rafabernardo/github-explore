@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { useGetRepositories } from '../../hooks/useSearch'
+import React, { useState } from 'react'
+import ReactLoading from 'react-loading'
+import { useDebounce } from 'use-debounce'
+
 import RepositoryItem from '../../components/repository-item'
 import SearchInput from '../../components/search-input'
+import { useGetRepositories } from '../../hooks/useSearch'
+
 import styles from './styles.css'
-import { useDebounce } from 'use-debounce'
 
 const Main = () => {
   const [test, setTest] = useState('')
   const [searchResult] = useDebounce(test, 1500)
 
   const { data, isLoading, isIdle } = useGetRepositories(searchResult)
-
-  if (isLoading && !isIdle) {
-    return <div>...</div>
-  }
 
   const handleChange = (event) => {
     const { value } = event.target
@@ -24,9 +23,20 @@ const Main = () => {
     <div className={styles.container}>
       <h1 className={styles.title}>Repositories</h1>
       <SearchInput onChange={handleChange} />
-      {data?.items?.map((item) => (
-        <RepositoryItem key={item.id} {...item} />
-      ))}
+      {isLoading && !isIdle ? (
+        <div className={styles.loading}>
+          <ReactLoading
+            type='bubbles'
+            color='red'
+            height='100px'
+            width='100px'
+          />
+        </div>
+      ) : (
+        data?.items?.map((item) => (
+          <RepositoryItem key={item.id} name={item.name} />
+        ))
+      )}
     </div>
   )
 }

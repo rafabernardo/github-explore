@@ -12,6 +12,7 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-loading": "^2.0.3",
     "react-query": "^3.27.0",
     "use-debounce": "^7.0.0"
   },
@@ -43,7 +44,7 @@
     "postcss-loader": "^6.1.1",
     "postcss-nested": "^5.0.6",
     "postcss-normalize": "^10.0.0",
-    "prettier": "^2.3.2",
+    "prettier": "^2.4.1",
     "prettier-stylelint": "^0.4.2",
     "style-loader": "^3.2.1",
     "stylelint": "^13.13.1",

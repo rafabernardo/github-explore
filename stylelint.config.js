@@ -1,22 +1,18 @@
 module.exports = {
-  extends: "stylelint-config-standard",
+  extends: 'stylelint-config-standard',
   rules: {
-    "declaration-colon-newline-after": null,
-    "selector-pseudo-class-no-unknown": [
+    'declaration-colon-newline-after': null,
+    'selector-pseudo-class-no-unknown': [
       true,
       {
-        ignorePseudoClasses: ["global"],
+        ignorePseudoClasses: ['global'],
       },
     ],
-    "at-rule-no-unknown": [
-        true,
-        {
-          ignoreAtRules: [
-            "variants",
-            "responsive",
-            "screen",
-          ],
-        },
-      ],
+    'at-rule-no-unknown': [
+      true,
+      {
+        ignoreAtRules: ['variants', 'responsive', 'screen'],
+      },
+    ],
   },
-};
+}

@@ -1,5 +1,5 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 
 const RepositoryItem = ({ name }) => {
   return (
@@ -9,7 +9,7 @@ const RepositoryItem = ({ name }) => {
   )
 }
 
-RepositoryItem.prototype = {
+RepositoryItem.propTypes = {
   name: PropTypes.string.isRequired,
 }
 
