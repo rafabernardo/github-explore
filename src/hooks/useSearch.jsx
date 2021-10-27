@@ -1,16 +1,22 @@
-import { useQuery } from 'react-query'
+/* eslint-disable import/prefer-default-export */
+import { useInfiniteQuery } from 'react-query'
+
 import { request } from '../service/request'
 
-const fetchRepositories = async (params) => {
-  const res = await request.get('search/repositories', { params: { q: params } })
-  return res.data
+const fetchRepositories = async ({ param, pageParam }) => {
+  const res = await request.get('search/repositories', {
+    params: { q: param, page: pageParam },
+  })
+
+  return { data: res.data, nextPage: pageParam + 1, previousPage: pageParam }
 }
 
 export const useGetRepositories = (param) => {
-  return useQuery(['repositories', param], () => fetchRepositories(param), {
-    onError: () => {
-      console.log('Could not retrieve feedbacks')
-    },
+  return useInfiniteQuery(['repositories', param], ({ pageParam = 1 }) => fetchRepositories({ param, pageParam }), {
+    onError: () => {},
     enabled: !!param,
+    keepPreviousData: true,
+    getNextPageParam: (lastPage) => lastPage.nextPage,
+    getPreviousPageParam: (firstPage) => firstPage.previousPage,
   })
 }
