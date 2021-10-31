@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { useInfiniteQuery } from 'react-query'
 
 import { request } from '../service/request'
@@ -11,7 +10,7 @@ const fetchRepositories = async ({ param, pageParam }) => {
   return { data: res.data, nextPage: pageParam + 1, previousPage: pageParam }
 }
 
-export const useGetRepositories = (param) => {
+const useGetRepositories = (param) => {
   return useInfiniteQuery(['repositories', param], ({ pageParam = 1 }) => fetchRepositories({ param, pageParam }), {
     onError: () => {},
     enabled: !!param,
@@ -20,3 +19,5 @@ export const useGetRepositories = (param) => {
     getPreviousPageParam: (firstPage) => firstPage.previousPage,
   })
 }
+
+export default useGetRepositories

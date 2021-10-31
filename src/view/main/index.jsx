@@ -4,7 +4,7 @@ import { useDebounce } from 'use-debounce'
 
 import RepositoryItem from '../../components/repository-item'
 import SearchInput from '../../components/search-input'
-import { useGetRepositories } from '../../hooks/useSearch'
+import useGetRepositories from '../../hooks/useSearch'
 import useInfiniteScroll from '../../hooks/useInfiniteScroll'
 
 import styles from './styles.css'

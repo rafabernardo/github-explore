@@ -1,13 +1,12 @@
 import React from 'react'
-
 import { QueryClient, QueryClientProvider } from 'react-query'
+
 import Main from './view/main'
 
-export function App() {
+const App = () => {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        refetchOnWindowFocus: false,
         retry: false,
         retryOnMount: false,
         refetchOnMount: false,
@@ -22,3 +21,5 @@ export function App() {
     </QueryClientProvider>
   )
 }
+
+export default App
