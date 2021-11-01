@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react'
 import ReactLoading from 'react-loading'
 import { useDebounce } from 'use-debounce'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 import RepositoryItem from '../../components/repository-item'
 import SearchInput from '../../components/search-input'
@@ -29,6 +30,7 @@ const Main = () => {
     <div className={styles.container}>
       <h1 className={styles.title}>Repositories</h1>
       <SearchInput onChange={handleChange} />
+
       {isLoading && !isIdle ? (
         <div className={styles.loading}>
           <ReactLoading type='bubbles' color='red' height='100px' width='100px' />
@@ -40,6 +42,7 @@ const Main = () => {
           ))}
         </div>
       )}
+      <ReactQueryDevtools initialIsOpen={false} />
     </div>
   )
 }

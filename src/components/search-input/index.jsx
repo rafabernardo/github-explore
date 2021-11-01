@@ -8,7 +8,7 @@ import styles from './styles.css'
 const SearchInput = ({ onChange }) => {
   return (
     <div className={styles.container}>
-      <svg viewBox={SearchIcon.viewBox} className={styles.searchIcon}>
+      <svg viewBox={SearchIcon.viewBox} className={styles['search-icon']}>
         <use xlinkHref={`#${SearchIcon.id}`} />
       </svg>
       <input type='text' className={styles.input} onChange={onChange} />

@@ -3,6 +3,8 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 
 import Main from './view/main'
 
+import './styles/global.css'
+
 const App = () => {
   const queryClient = new QueryClient({
     defaultOptions: {
