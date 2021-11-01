@@ -1,7 +1,8 @@
-const postcssNested = require('postcss-nested')
+const postCssNested = require('postcss-nested')
 const autoprefixer = require('autoprefixer')
-const postcssNormalize = require('postcss-normalize')
+const postCssNormalize = require('postcss-normalize')
+const postCssReset = require('postcss-css-reset')
 
 module.exports = {
-  plugins: [postcssNested, autoprefixer(), postcssNormalize()],
+  plugins: [postCssNested, autoprefixer(), postCssNormalize(), postCssReset()],
 }
