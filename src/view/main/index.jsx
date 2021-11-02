@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react'
 import ReactLoading from 'react-loading'
 import { useDebounce } from 'use-debounce'
-import Particles from 'react-tsparticles'
 
 import RepositoryItem from '../../components/repository-item'
 import SearchInput from '../../components/search-input'
@@ -28,85 +27,6 @@ const Main = () => {
 
   return (
     <div className={styles.container}>
-      <Particles
-        style={{ position: 'absolute', zIndex: 1 }}
-        options={{
-          background: {
-            color: {
-              value: '#0d47a1',
-            },
-          },
-          fpsLimit: 30,
-          interactivity: {
-            events: {
-              onClick: {
-                enable: true,
-                mode: 'attract',
-              },
-              onHover: {
-                enable: true,
-                mode: 'bubble',
-              },
-              resize: true,
-            },
-            modes: {
-              attract: {
-                distance: 300,
-                easing: 'ease-out-quart',
-                factor: 0.4,
-                maxSpeed: 1,
-              },
-              bubble: {
-                distance: 200,
-                duration: 0.5,
-                opacity: 0.6,
-                size: 5,
-              },
-            },
-          },
-          particles: {
-            color: {
-              value: '#ffffff',
-            },
-            links: {
-              color: '#ffffff',
-              distance: 150,
-              enable: true,
-              opacity: 0.2,
-              width: 1,
-            },
-            collisions: {
-              enable: true,
-            },
-            move: {
-              direction: 'none',
-              enable: true,
-              outMode: 'bounce',
-              random: false,
-              speed: 2,
-              straight: false,
-            },
-            number: {
-              density: {
-                enable: true,
-                value_area: 700,
-              },
-              value: 50,
-            },
-            opacity: {
-              value: 0.2,
-            },
-            shape: {
-              type: 'circle',
-            },
-            size: {
-              random: true,
-              value: 1,
-            },
-          },
-          detectRetina: true,
-        }}
-      />
       <h1 className={styles.title}>Repositories</h1>
       <SearchInput onChange={handleChange} placeholder='Search for a repository name' />
 
