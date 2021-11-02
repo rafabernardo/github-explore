@@ -1,5 +1,7 @@
 .container {
   position: relative;
+  margin: 2rem;
+  width: 100%;
 
   .search-icon {
     position: absolute;
@@ -16,8 +18,9 @@
     border-radius: 0.8rem;
     border: none;
     padding-left: 4.5rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     line-height: 1.2;
     font-weight: 400;
+    width: 100%;
   }
 }

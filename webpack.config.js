@@ -39,8 +39,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx$/,
-        exclude: /nodule_modules/,
+        test: /\.(js|mjs|jsx|ts|tsx)$/,
+        exclude: /node_modules/,
         // integration between babel~webpack
         use: 'babel-loader',
       },
