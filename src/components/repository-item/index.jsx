@@ -21,12 +21,12 @@ const RepositoryItem = ({ name, description, stargazersCount, owner }) => {
           </svg>
           <p className={styles.text}>{stargazersCount} </p>
         </div>
-        <button type='button' className={styles['details-user']}>
+        <a href={owner.htmlUrl} target='_blank' rel='noreferrer noopener' className={styles['details-user']}>
           <p className={styles.text}>More repositories from {owner.login} </p>
           <svg viewBox={ArrowIcon.viewBox} className={styles['details-user-icon']}>
             <use xlinkHref={`#${ArrowIcon.id}`} />
           </svg>
-        </button>
+        </a>
       </div>
     </div>
   )
@@ -38,6 +38,7 @@ RepositoryItem.propTypes = {
   stargazersCount: PropTypes.number,
   owner: PropTypes.shape({
     login: PropTypes.string,
+    htmlUrl: PropTypes.string,
   }).isRequired,
 }
 
