@@ -1,15 +1,6 @@
 import { useInfiniteQuery } from 'react-query'
-import humps from 'humps'
 
-import { request } from '../service/request'
-
-const fetchRepositories = async ({ param, pageParam }) => {
-  const res = await request.get('search/repositories', {
-    params: { q: param, page: pageParam },
-  })
-
-  return { data: humps.camelizeKeys(res.data), nextPage: pageParam + 1, previousPage: pageParam }
-}
+import { fetchRepositories } from '../service/request'
 
 const useGetRepositories = (param) => {
   return useInfiniteQuery(['repositories', param], ({ pageParam = 1 }) => fetchRepositories({ param, pageParam }), {
